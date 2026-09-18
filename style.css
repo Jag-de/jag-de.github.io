@@ -1,0 +1,528 @@
+:root {
+  --bg: #f5f5f2;
+  --text: #111;
+  --muted: #777;
+  --line: #d9d9d4;
+  --card: #e9e9e4;
+
+  --max-width: 1280px;
+  --page-padding: 48px;
+  --radius: 7px;
+}
+
+
+/* =========================
+   RESET
+========================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 320px;
+  overflow-x: hidden;
+
+  background: var(--bg);
+  color: var(--text);
+
+  font-family:
+    Inter,
+    "Helvetica Neue",
+    Helvetica,
+    Arial,
+    sans-serif;
+
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+
+/* =========================
+   SHARED TYPOGRAPHY
+========================= */
+
+.section-title {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 0.95;
+  letter-spacing: -0.055em;
+}
+
+
+/* =========================
+   PAGE
+========================= */
+
+.page {
+  width: min(
+    var(--max-width),
+    calc(100% - var(--page-padding))
+  );
+
+  margin-inline: auto;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+  padding: 30px 0 35px;
+}
+
+.hero-description {
+  max-width: 390px;
+
+  color: var(--text);
+
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.02em;
+}
+
+
+/* NEW: Main introduction */
+
+.hero-intro {
+  max-width: 600px;
+
+  margin-top: 10px;
+
+  color: var(--muted);
+
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+}
+
+
+/* NEW: Education */
+
+.education {
+  margin-top: 25px;
+
+  color: var(--text);
+
+  font-size: 13px;
+  line-height: 1.7;
+  letter-spacing: -0.01em;
+}
+
+.education p {
+  margin: 0;
+}
+
+
+/* NEW: Experience */
+
+.experience {
+  margin-top: 2px;
+
+  color: var(--muted);
+
+  font-size: 13px;
+  line-height: 1.7;
+  letter-spacing: -0.01em;
+}
+
+.experience p {
+  margin: 0;
+}
+
+
+/* =========================
+   PROJECTS
+========================= */
+
+.work {
+  padding: 20px 0 50px;
+}
+
+.section-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 35px;
+  padding-bottom: 13px;
+
+  border-bottom: 1px solid var(--line);
+}
+
+.section-year {
+  color: var(--muted);
+
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+
+/* =========================
+   PROJECT GRID
+========================= */
+
+.project-gallery {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 40px 18px;
+}
+
+.project-card {
+  display: block;
+  min-width: 0;
+}
+
+.project-cover {
+  width: 100%;
+  height: 150px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+
+  background: var(--card);
+  border-radius: var(--radius);
+}
+
+.project-cover img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: contain;
+  object-position: center;
+
+  transition:
+    transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.3s ease;
+}
+
+.project-name {
+  margin-top: 10px;
+
+  font-size: 14px;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+
+  transition: opacity 0.25s ease;
+}
+
+
+/* =========================
+   HOVER
+========================= */
+
+@media (hover: hover) {
+  .project-card:hover .project-cover img {
+    transform: scale(1.035);
+  }
+
+  .project-card:hover .project-name {
+    opacity: 0.5;
+  }
+
+  .email:hover,
+  .phone:hover,
+  .socials a:hover {
+    opacity: 0.45;
+  }
+}
+
+
+/* =========================
+   CONTACT
+========================= */
+
+.contact {
+  padding: 30px 0 28px;
+
+  border-top: 1px solid var(--line);
+}
+
+.contact-main {
+  padding: 10px 0 30px;
+}
+
+.contact-subtitle {
+  margin-top: 14px;
+
+  color: var(--muted);
+
+  font-size: 16px;
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+}
+
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  margin-top: 30px;
+}
+
+.email,
+.phone {
+  display: inline-block;
+  width: fit-content;
+
+  padding-bottom: 4px;
+
+  color: var(--text);
+
+  border-bottom: 1px solid var(--text);
+
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.3;
+  letter-spacing: -0.025em;
+
+  transition: opacity 0.3s ease;
+}
+
+.phone {
+  margin-top: 12px;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.contact-bottom {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  padding-top: 25px;
+
+  border-top: 1px solid var(--line);
+
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.socials {
+  display: flex;
+  gap: 20px;
+}
+
+.socials a {
+  color: var(--text);
+
+  transition: opacity 0.25s ease;
+}
+
+
+/* =========================
+   FLYING ARROW
+========================= */
+
+.arrow-container {
+  position: fixed;
+  z-index: 50;
+
+  top: 75px;
+  left: 50%;
+
+  width: 75px;
+  height: 170px;
+
+  pointer-events: none;
+
+  transform: translateX(-50%);
+}
+
+.arrow-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.arrow-path {
+  fill: none;
+
+  stroke: var(--text);
+  stroke-width: 1.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+
+  stroke-dasharray: 600;
+  stroke-dashoffset: 600;
+}
+
+.arrow-head {
+  fill: var(--text);
+  opacity: 0;
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 800px) {
+  :root {
+    --page-padding: 28px;
+  }
+
+  .hero {
+    padding-top: 22px;
+    padding-bottom: 30px;
+  }
+
+  .hero-description {
+    max-width: 330px;
+    font-size: 15px;
+  }
+
+  .hero-intro {
+    max-width: 330px;
+    font-size: 15px;
+  }
+
+  .education,
+  .experience {
+    font-size: 12px;
+  }
+
+  .work {
+    padding-top: 15px;
+    padding-bottom: 40px;
+  }
+
+  .project-gallery {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 30px 14px;
+  }
+
+  .project-cover {
+    height: 125px;
+  }
+
+  .project-name {
+    font-size: 13px;
+  }
+
+  .contact {
+    padding-top: 25px;
+  }
+
+  .contact-main {
+    padding-top: 5px;
+    padding-bottom: 25px;
+  }
+
+  .contact-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+  }
+
+  .arrow-container {
+    top: 65px;
+    left: 82%;
+
+    width: 55px;
+    height: 125px;
+  }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 500px) {
+  :root {
+    --page-padding: 28px;
+  }
+
+  .hero {
+    padding-bottom: 25px;
+  }
+
+  .hero-intro {
+    max-width: 100%;
+    font-size: 14px;
+  }
+
+  .education,
+  .experience {
+    font-size: 11.5px;
+    line-height: 1.65;
+  }
+
+  .section-title {
+    font-size: 17px;
+  }
+
+  .project-gallery {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+
+  .project-cover {
+    height: 150px;
+  }
+
+  .email,
+  .phone {
+    font-size: 14px;
+  }
+
+  .socials {
+    gap: 16px;
+  }
+
+  .arrow-container {
+    display: none;
+  }
+}
+
+
+/* =========================
+   REDUCED MOTION
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
