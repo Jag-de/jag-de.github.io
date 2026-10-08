@@ -1,3 +1,7 @@
+/* =========================
+   FLYING ARROW
+========================= */
+
 (() => {
   "use strict";
 
@@ -77,4 +81,80 @@
   );
 
   updateArrow();
+})();
+
+
+/* =========================
+   PROJECT PAGINATION
+========================= */
+
+(() => {
+  "use strict";
+
+  const PER_PAGE = 9;
+
+  const gallery = document.querySelector(".project-gallery");
+  const nav = document.getElementById("pagination");
+
+  if (!gallery || !nav) {
+    return;
+  }
+
+  const cards = Array.from(gallery.querySelectorAll(".project-card"));
+  const totalPages = Math.ceil(cards.length / PER_PAGE);
+
+  let current = 1;
+
+  function showPage(page, shouldScroll = true) {
+    current = page;
+
+    const start = (page - 1) * PER_PAGE;
+    const end = start + PER_PAGE;
+
+    cards.forEach((card, i) => {
+      card.hidden = !(i >= start && i < end);
+    });
+
+    renderNav();
+
+    /* Only scroll when the user clicks, not on first load */
+    if (shouldScroll) {
+      gallery.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }
+
+  function makeButton(label, page, className) {
+    const btn = document.createElement("button");
+
+    btn.type = "button";
+    btn.className = className;
+    btn.textContent = label;
+
+    btn.addEventListener("click", () => showPage(page));
+
+    return btn;
+  }
+
+  function renderNav() {
+    nav.innerHTML = "";
+
+    if (totalPages <= 1) {
+      return;
+    }
+
+    /* Projects are listed newest first, so page 1 = newest */
+    if (current > 1) {
+      nav.appendChild(
+        makeButton("\u2190 Newer Projects", current - 1, "pagination-newer")
+      );
+    }
+
+    if (current < totalPages) {
+      nav.appendChild(
+        makeButton("Older Projects \u2192", current + 1, "pagination-older")
+      );
+    }
+  }
+
+  showPage(1, false);
 })();

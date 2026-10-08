@@ -196,6 +196,11 @@ img {
   min-width: 0;
 }
 
+/* Hides cards that are not on the current page */
+.project-card[hidden] {
+  display: none;
+}
+
 .project-cover {
   width: 100%;
   height: 150px;
@@ -236,6 +241,50 @@ img {
 
 
 /* =========================
+   PAGINATION
+========================= */
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-top: 50px;
+  padding-top: 18px;
+
+  border-top: 1px solid var(--line);
+}
+
+.pagination button {
+  padding: 4px 0;
+
+  background: none;
+  border: 0;
+
+  color: var(--text);
+
+  font: inherit;
+  font-size: 14px;
+  letter-spacing: -0.02em;
+
+  cursor: pointer;
+
+  transition: opacity 0.25s ease;
+}
+
+/* "Older Projects →" always stays on the right,
+   even when "← Newer Projects" is not shown */
+.pagination .pagination-older {
+  margin-left: auto;
+}
+
+.pagination button:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 4px;
+}
+
+
+/* =========================
    HOVER
 ========================= */
 
@@ -246,6 +295,10 @@ img {
 
   .project-card:hover .project-name {
     opacity: 0.5;
+  }
+
+  .pagination button:hover {
+    opacity: 0.45;
   }
 
   .email:hover,
@@ -493,6 +546,14 @@ img {
 
   .project-cover {
     height: 150px;
+  }
+
+  .pagination {
+    margin-top: 40px;
+  }
+
+  .pagination button {
+    font-size: 13px;
   }
 
   .email,
